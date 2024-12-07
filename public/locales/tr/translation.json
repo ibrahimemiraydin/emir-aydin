@@ -1,0 +1,15 @@
+{
+    "navbar": {
+      "home": "Ana Sayfa",
+      "projects": "Projeler",
+      "contact": "İletişim"
+    },
+    "footer": {
+      "copyright": "Emir Aydın. Tüm hakları saklıdır.",
+      "language": {
+        "turkish": "Türkçe",
+        "english": "İngilizce"
+      }
+    }
+  }
+  
