@@ -1,0 +1,21 @@
+{
+    "Projelerim": "My Projects",
+    "Tüm Projelere Git": "View All Projects",
+    "Websiteme Hoşgeldiniz": "Welcome to my website",
+    "Projelerimi burada bulabilirsiniz": "You can find my projects here.",
+    "Tüm Projeler":"All Projects",
+    "İletişime Geç": "Contact",
+  
+    "navbar": {
+      "home": "Home",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "footer": {
+      "copyright": "Emir Aydın. All rights reserved.",
+      "language": {
+        "turkish": "Turkish",
+        "english": "English"
+      }
+    }
+  }
