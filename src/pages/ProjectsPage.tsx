@@ -1,4 +1,3 @@
-import React from "react";
 import ProjectCard from "../components/ProjectCard";
 import { projectsData } from "../data/projectsData";
 import { motion } from "framer-motion";

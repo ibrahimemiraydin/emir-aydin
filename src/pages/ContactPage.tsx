@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaGithub, FaInstagram, FaYoutube, FaTwitter, FaDiscord } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
