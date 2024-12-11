@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://ibrahimemiraydin.github.io/",
+  "homepage": "https://ibrahimemiraydin.github.io",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
