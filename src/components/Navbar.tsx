@@ -30,10 +30,12 @@ const Navbar: React.FC = () => {
       ref={navbarRef}
       className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 shadow-md border-b-2 border-gray-300 dark:border-gray-700"
     >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="container mx-auto max-w-6xl px-4 py-6 flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-4xl font-semibold text-gray-800 dark:text-white transition-all duration-300 ease-in-out transform hover:scale-105 hover:text-blue-500 dark:hover:text-blue-400">
-            <Link to="/">Emir Aydın</Link>
+        <h1 className="text-4xl font-semibold text-gray-800 dark:text-white transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-90">
+            <Link to="/">
+            <img src="public/android-chrome-512x512.png" alt="Emir Aydın" className="w-12 h-12 " />
+            </Link>
         </h1>
 
         {/* Desktop Navigation */}
