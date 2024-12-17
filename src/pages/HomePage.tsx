@@ -22,46 +22,7 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-800">
-      {/* Tam Ekran Görsel Alanı */}
-      <header
-        className="relative w-full bg-cover bg-center"
-        style={{
-          height: "calc(100vh - 4rem)", // Navbar yüksekliği 4rem olarak varsayıldı
-          backgroundImage: `url('https://www.1zoom.me/big2/771/322884-Sepik.jpg')`,
-        }}
-        data-aos="fade-up"
-      >
-        <div
-          className="absolute inset-0 text-center flex flex-col justify-center items-center text-white bg-black bg-opacity-50"
-          data-aos="fade-up"
-        >
-          <motion.h1
-            className="text-4xl md:text-6xl font-bold mb-4"
-            initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, type: "spring", stiffness: 100 }}
-          >
-            {t("Websiteme Hoşgeldiniz")}
-          </motion.h1>
-          <motion.p
-            className="text-lg md:text-2xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            {t("Projelerimi burada bulabilirsiniz")}
-          </motion.p>
-        </div>
-        {/* Aşağı Kaydırma Animasyonu */}
-        <motion.div
-          className="absolute bottom-4 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <div className="text-white text-3xl">&#x2193;</div>
-        </motion.div>
-      </header>
-
+      
       {/* Projeler Showcase Bölümü */}
       <main className="flex-grow container mx-auto py-16 px-4" data-aos="fade-up">
         <h2

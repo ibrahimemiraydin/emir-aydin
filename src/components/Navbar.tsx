@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
   return (
     <nav
       ref={navbarRef}
-      className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 shadow-md border-b-2 border-gray-300 dark:border-gray-700"
+      className="bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-md"
     >
       <div className="container mx-auto max-w-6xl px-4 py-6 flex justify-between items-center">
         {/* Logo */}
