@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <h1 className="text-4xl font-semibold text-gray-800 dark:text-white transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-90">
             <Link to="/">
-            <img src="./public/icons/android-chrome-512x512.png" alt="Emir Aydın" className="w-12 h-12 " />
+            <img src="../icons/android-chrome-512x512.png" alt="Emir Aydın" className="w-12 h-12 " />
             </Link>
         </h1>
 

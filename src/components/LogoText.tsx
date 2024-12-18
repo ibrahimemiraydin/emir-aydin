@@ -8,10 +8,10 @@ const LogoText: React.FC = () => {
 
   // İkonlar ve metinler
   const icons = [
-    { src: "./public/icons/react-icon.png", alt: "React" },
-    { src: "./public/icons/typescript-icon.png", alt: "Typescript" },
-    { src: "./public/icons/tailwind-icon.png", alt: "Tailwind CSS" },
-    { src: "./public/icons/java-icon.png", alt: "Java" },
+    { src: "../icons/java-icon.png", alt: "React" },
+    { src: "../icons/typescript-icon.png", alt: "Typescript" },
+    { src: "../icons/tailwind-icon.png", alt: "Tailwind CSS" },
+    { src: "../icons/java-icon.png", alt: "Java" },
   ];
   const texts = [
     t("App Development"),
@@ -32,13 +32,13 @@ const LogoText: React.FC = () => {
 
       {/* Logo */}
       <img
-        src="./public/logo/light-logo.png" // Light mode logo
+        src="../logo/light-logo.png" // Light mode logo
         alt="Light Logo"
         className="mb-4 block dark:hidden mt-14 cursor-pointer transform transition-transform hover:scale-110"
         onClick={handleLogoClick} // Tıklama ile yönlendirme
       />
       <img
-        src="./public/logo/dark-logo.png" // Dark mode logo
+        src="./logo/dark-logo.png" // Dark mode logo
         alt="Dark Logo"
         className="mb-4 hidden dark:block mt-14 cursor-pointer transform transition-transform hover:scale-110"
         onClick={handleLogoClick} // Tıklama ile yönlendirme
