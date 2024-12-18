@@ -9,6 +9,7 @@ import SEO from "./components/SEO";
 import Footer from "./components/Footer";
 import { useTranslation } from "react-i18next";
 import './i18n';  // Ensure i18n is initialized before app renders
+import ScrollToTop from "./components/ScrollToTop";
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
     <ThemeProvider>
       <Router>
         <SEO title="Emir Aydın" description="Projelerimin yer aldığı bir website" />
+        <ScrollToTop /> {/* Sayfa geçişi olduğunda sayfayı en üste kaydır */}
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <main className="flex-grow">

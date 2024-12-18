@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 interface RotatingIconProps {
   icons: { src: string; alt: string }[]; // İkonları içeren dizi (src ve alt özellikleri ile)
-  interval?: number; // İkon değiştirme süresi (varsayılan 1500ms)
+  interval?: number; // İkon değiştirme süresi (varsayılan 3000ms)
 }
 
 const RotatingIcon: React.FC<RotatingIconProps> = ({ icons, interval = 3000 }) => {

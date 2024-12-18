@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
 import { useTranslation } from "react-i18next"; // Çeviri desteği
@@ -9,9 +9,27 @@ const Navbar: React.FC = () => {
   const navbarRef = useRef<HTMLDivElement>(null); // Navbar reference
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false); // Sayfa kaydırıldığında navbar'ı kontrol etmek için
   const hoverTimeout = useRef<number | null>(null);
 
   const { t } = useTranslation(); // useTranslation hook'u
+
+  // Sayfa kaydırıldığında navbar'ın saydamlığını ve gölgeyi ayarlamak için
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true); // Sayfa kaydırıldıysa navbar'a gölge ve saydamlık ekle
+      } else {
+        setIsScrolled(false); // Sayfa başında ise gölgeyi kaldır
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Dropdown için mouse olayları
   const handleMouseEnter = () => {
@@ -28,7 +46,11 @@ const Navbar: React.FC = () => {
   return (
     <nav
       ref={navbarRef}
-      className="bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-md"
+      className={`transition-all duration-300 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200 fixed top-0 left-0 right-0 z-10 ${
+        isScrolled
+          ? "bg-opacity-90 shadow-lg dark:bg-opacity-90 dark:shadow-lg" // Kaydırıldığında her iki modda da saydamlık ve gölge
+          : "bg-opacity-100 shadow-none dark:bg-opacity-100 dark:shadow-none" // Kaydırılmadığında her iki modda da opaklık ve gölgeyi kaldır
+      }`}
     >
       <div className="container mx-auto max-w-6xl px-4 py-6 flex justify-between items-center">
         {/* Logo */}

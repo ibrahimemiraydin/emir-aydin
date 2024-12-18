@@ -14,10 +14,10 @@ const LogoText: React.FC = () => {
     { src: "../src/assets/icons/java-icon.png", alt: "Java" },
   ];
   const texts = [
-    t("Web development"),
-    t("Mobile apps"),
-    t("UI/UX design"),
-    t("Creative solutions"),
+    t("React"),
+    t("Typescript"),
+    t("Tailwind CSS"),
+    t("Java"),
   ];
 
   // GitHub profil sayfasına yeni sekmede yönlendirme
