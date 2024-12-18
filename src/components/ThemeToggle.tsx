@@ -13,7 +13,7 @@ const ThemeToggle = () => {
     >
       {/* Eğer tema dark ise Ay simgesini, light ise Güneş simgesini göster */}
       {theme === "dark" ? (
-        <MoonIcon className="w-6 h-6" />
+        <MoonIcon className="w-6 h-6 text-gray-800 dark:text-white" />
       ) : (
         <SunIcon className="w-6 h-6" />
       )}

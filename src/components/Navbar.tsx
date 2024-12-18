@@ -1,37 +1,30 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
-import { useTranslation } from "react-i18next"; // Çeviri desteği
+import { useTranslation } from "react-i18next";
 import ThemeToggle from "./ThemeToggle";
 import ContactDropdown from "./ContactDropdown";
 
 const Navbar: React.FC = () => {
-  const navbarRef = useRef<HTMLDivElement>(null); // Navbar reference
+  const navbarRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false); // Sayfa kaydırıldığında navbar'ı kontrol etmek için
+  const [isScrolled, setIsScrolled] = useState(false);
   const hoverTimeout = useRef<number | null>(null);
+  const location = useLocation(); // Aktif sayfayı almak için
 
-  const { t } = useTranslation(); // useTranslation hook'u
+  const { t } = useTranslation();
 
-  // Sayfa kaydırıldığında navbar'ın saydamlığını ve gölgeyi ayarlamak için
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true); // Sayfa kaydırıldıysa navbar'a gölge ve saydamlık ekle
-      } else {
-        setIsScrolled(false); // Sayfa başında ise gölgeyi kaldır
-      }
+      setIsScrolled(window.scrollY > 50);
     };
-    
     window.addEventListener("scroll", handleScroll);
-    
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  // Dropdown için mouse olayları
   const handleMouseEnter = () => {
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
     setIsDropdownOpen(true);
@@ -40,67 +33,96 @@ const Navbar: React.FC = () => {
   const handleMouseLeave = () => {
     hoverTimeout.current = window.setTimeout(() => {
       setIsDropdownOpen(false);
-    }, 200); // 200ms gecikme
+    }, 200);
   };
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <nav
       ref={navbarRef}
-      className={`transition-all duration-300 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200 fixed top-0 left-0 right-0 z-10 ${
+      className={`transition-all duration-300 fixed top-0 left-0 right-0 z-10 ${
         isScrolled
-          ? "bg-opacity-90 shadow-lg dark:bg-opacity-90 dark:shadow-lg" // Kaydırıldığında her iki modda da saydamlık ve gölge
-          : "bg-opacity-100 shadow-none dark:bg-opacity-100 dark:shadow-none" // Kaydırılmadığında her iki modda da opaklık ve gölgeyi kaldır
+          ? "bg-gray-50/90 dark:bg-gray-800/90 shadow-lg"
+          : "bg-transparent dark:bg-transparent"
       }`}
     >
       <div className="container mx-auto max-w-6xl px-4 py-6 flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-4xl font-semibold text-gray-800 dark:text-white transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-90">
-            <Link to="/">
-            <img src="../icons/android-chrome-512x512.png" alt="Emir Aydın" className="w-12 h-12 " />
-            </Link>
+        <h1 className="text-4xl font-semibold text-gray-800 dark:text-white">
+          <Link to="/">
+            <img
+              src="../icons/android-chrome-512x512.png"
+              alt="Emir Aydın"
+              className="w-12 h-12"
+            />
+          </Link>
         </h1>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
           <ul className="flex gap-6 text-lg font-medium">
             <li>
-              <Link to="/" className="hover:text-blue-500 transition-colors">
+              <Link
+                to="/"
+                className={`relative transition-colors ${
+                  isActive("/")
+                    ? "text-blue-500 underline"
+                    : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
+                }`}
+              >
                 {t("navbar.home")}
+                {/* Custom underline effect */}
+                <span
+                className={`absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 transition-all duration-300 transform scale-x-0 group-hover:scale-x-100`}
+                ></span>
               </Link>
             </li>
             <li>
               <Link
                 to="/projects"
-                className="hover:text-blue-500 transition-colors"
+                className={`transition-colors ${
+                  isActive("/projects")
+                    ? "text-blue-500 underline"
+                    : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
+                }`}
               >
                 {t("navbar.projects")}
               </Link>
             </li>
-            {/* Contact Dropdown */}
             <li
               className="relative group"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <span className="hover:text-blue-500 cursor-pointer flex items-center gap-1">
-                {t("navbar.contact")}
+              <span className="flex items-center gap-1 cursor-pointer hover:text-blue-500">
+                <Link
+                  to="/contact"
+                  className={`transition-colors ${
+                    isActive("/contact")
+                      ? "text-blue-500 underline "
+                      : "text-gray-800 dark:text-gray-200  hover:text-blue-500"
+                  }`}
+                >
+                  {t("navbar.contact")}
+                </Link>
                 <FaChevronDown
                   size={12}
-                  className="transition-transform duration-200 group-hover:rotate-180"
+                  className="dark:text-white transition-transform duration-200 group-hover:rotate-180"
                 />
               </span>
-              {/* Dropdown menu component */}
-              <ContactDropdown isDropdownOpen={isDropdownOpen} navbarHeight={50} />
+              <ContactDropdown
+                isDropdownOpen={isDropdownOpen}
+                navbarHeight={50}
+              />
             </li>
           </ul>
-
-          {/* Theme Toggle */}
           <ThemeToggle />
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl focus:outline-none"
+          className="md:hidden text-2xl focus:outline-none dark:text-white"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           ☰
@@ -108,43 +130,65 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-100 dark:bg-gray-900">
-          <ul className="flex flex-col items-center gap-4 py-4">
-            <li>
-              <Link
-                to="/"
-                className="text-lg font-medium hover:text-blue-500 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t("navbar.home")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/projects"
-                className="text-lg font-medium hover:text-blue-500 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t("navbar.projects")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/contact"
-                className="text-lg font-medium hover:text-blue-500 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t("navbar.contact")}
-              </Link>
-            </li>
-            {/* Theme Toggle */}
-            <div>
-              <ThemeToggle />
-            </div>
-          </ul>
-        </div>
-      )}
+      <div
+        className={`fixed top-0 right-0 h-full w-3/4 bg-gray-50 dark:bg-gray-800  transform transition-transform duration-300 ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <button
+          className="absolute top-4 right-4 text-2xl text-gray-800 dark:text-gray-200"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          ✖
+        </button>
+        <ul className="flex flex-col items-center z-50 gap-6 mt-12 text-lg font-medium">
+          <li>
+            <Link
+              to="/"
+              className={`relative transition-colors ${
+                isActive("/")
+                  ? "text-blue-500 underline "
+                  : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("navbar.home")}
+              <span
+              className={`absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 transition-all duration-300 transform scale-x-0 group-hover:scale-x-100`}
+              ></span>             
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/projects"
+              className={`transition-colors ${
+                isActive("/projects")
+                  ? "text-blue-500 underline"
+                  : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("navbar.projects")}
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/contact"
+              className={`transition-colors ${
+                isActive("/contact")
+                  ? "text-blue-500 underline"
+                  : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("navbar.contact")}
+            </Link>
+          </li>
+          <div>
+            <ThemeToggle />
+          </div>
+        </ul>
+      </div>
     </nav>
   );
 };

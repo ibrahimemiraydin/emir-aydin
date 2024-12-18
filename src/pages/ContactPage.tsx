@@ -2,50 +2,44 @@ import { motion } from "framer-motion";
 import { FaEnvelope, FaGithub, FaInstagram, FaYoutube, FaTwitter, FaDiscord } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
-
 // Social Links Data
 const socialLinks = [
   {
     id: 1,
     name: "Email",
-    icon: <FaEnvelope size={50} />,
+    icon: <FaEnvelope size={40} />,
     link: "mailto:emiraydin1625@hotmail.com",
-    bgColor: "bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600",
   },
   {
     id: 2,
     name: "GitHub",
-    icon: <FaGithub size={50} />,
+    icon: <FaGithub size={40} />,
     link: "https://github.com/ibrahimemiraydin",
-    bgColor: "bg-gradient-to-r from-gray-900 to-gray-800",
+    bgColor: "bg-black"
   },
   {
     id: 3,
     name: "Instagram",
-    icon: <FaInstagram size={50} />,
+    icon: <FaInstagram size={40} />,
     link: "https://instagram.com/emiraydin.16",
-    bgColor: "bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600",
   },
   {
     id: 4,
     name: "YouTube",
-    icon: <FaYoutube size={50} />,
+    icon: <FaYoutube size={40} />,
     link: "https://youtube.com/@DejavuTR",
-    bgColor: "bg-gradient-to-r from-red-500 to-red-700",
   },
   {
     id: 5,
     name: "X (Twitter)",
-    icon: <FaTwitter size={50} />,
+    icon: <FaTwitter size={40} />,
     link: "https://twitter.com/emiraydin1625",
-    bgColor: "bg-gradient-to-r from-blue-400 to-blue-600",
   },
   {
     id: 6,
     name: "Discord",
-    icon: <FaDiscord size={50} />,
+    icon: <FaDiscord size={40} />,
     link: "https://discord.gg/vVqSqUhNb9",
-    bgColor: "bg-gradient-to-r from-indigo-500 to-indigo-700",
   },
 ];
 
@@ -89,29 +83,14 @@ const ContactPage = () => {
             href={social.link}
             target="_blank"
             rel="noopener noreferrer"
-            className={`relative group rounded-xl p-8 flex flex-col items-center justify-center text-white shadow-lg transform transition-all duration-300`}
+            className="flex flex-col items-center text-gray-800 dark:text-gray-100"
             variants={itemVariants}
-            whileHover={{
-              scale: 1.1,
-              rotate: 360,
-              transition: { duration: 0.3 },
-            }}
+            whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
           >
-            {/* Ripple Effect */}
-            <div
-              className="absolute inset-0 rounded-xl bg-gradient-to-r opacity-70 group-hover:animate-pulse group-hover:opacity-90 transition duration-300"
-              style={{
-                background: `radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent)`,
-              }}
-            ></div>
             {/* Icon */}
-            <div className="mb-4 text-white z-10 dark:text-white">{social.icon}</div>
+            <div className="mb-2 bg-white dark:bg-gray-700 shadow-lg rounded-lg w-10 py-0 border-1 ">{social.icon}</div>
             {/* Name */}
-            <p className="text-lg font-semibold text-white dark:text-white z-10">{social.name}</p>
-            {/* Background */}
-            <div
-              className={`absolute inset-0 rounded-xl ${social.bgColor} group-hover:brightness-125 transition duration-300`}
-            ></div>
+            <p className="text-lg font-semibold">{social.name}</p>
           </motion.a>
         ))}
       </motion.div>
