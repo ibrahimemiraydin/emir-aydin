@@ -8,16 +8,16 @@ const LogoText: React.FC = () => {
 
   // İkonlar ve metinler
   const icons = [
-    { src: "../src/assets/icons/react-icon.png", alt: "React" },
-    { src: "../src/assets/icons/typescript-icon.png", alt: "Typescript" },
-    { src: "../src/assets/icons/tailwind-icon.png", alt: "Tailwind CSS" },
-    { src: "../src/assets/icons/java-icon.png", alt: "Java" },
+    { src: "public/icons/react-icon.png", alt: "React" },
+    { src: "public/icons/typescript-icon.png", alt: "Typescript" },
+    { src: "public/icons/tailwind-icon.png", alt: "Tailwind CSS" },
+    { src: "public/icons/java-icon.png", alt: "Java" },
   ];
   const texts = [
-    t("React"),
-    t("Typescript"),
-    t("Tailwind CSS"),
-    t("Java"),
+    t("App Development"),
+    t("Web Development"),
+    t("UX / UI Design"),
+    t("Modding"),
   ];
 
   // GitHub profil sayfasına yeni sekmede yönlendirme
@@ -28,17 +28,17 @@ const LogoText: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center mt-14">
       {/* Rotating Icons */}
-      <RotatingIcon icons={icons} interval={2000} />
+      <RotatingIcon icons={icons} interval={3000} />
 
       {/* Logo */}
       <img
-        src="../src/assets/light-logo.png" // Light mode logo
+        src="public/logo/light-logo.png" // Light mode logo
         alt="Light Logo"
         className="mb-4 block dark:hidden mt-14 cursor-pointer transform transition-transform hover:scale-110"
         onClick={handleLogoClick} // Tıklama ile yönlendirme
       />
       <img
-        src="../src/assets/dark-logo.png" // Dark mode logo
+        src="public/logo/dark-logo.png" // Dark mode logo
         alt="Dark Logo"
         className="mb-4 hidden dark:block mt-14 cursor-pointer transform transition-transform hover:scale-110"
         onClick={handleLogoClick} // Tıklama ile yönlendirme
