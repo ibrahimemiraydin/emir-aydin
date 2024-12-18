@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { motion } from "framer-motion";
+import LogoText from "../components/LogoText"; // LogoText bileşenini burada import ettik
 
 const getRandomProjects = (data: typeof projectsData, count: number) => {
   const shuffled = [...data].sort(() => Math.random() - 0.5);
@@ -22,8 +23,12 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-800">
-      
-      {/* Projeler Showcase Bölümü */}
+      {/* Üst Bölüm */}
+      <header className="flex flex-col items-center justify-center mt-12 md:mt-16 lg:mt-20">
+        <LogoText /> {/* LogoText bileşenini burada kullanıyoruz */}
+      </header>
+
+      {/* Projeler Bölümü */}
       <main className="flex-grow container mx-auto py-16 px-4" data-aos="fade-up">
         <h2
           id="projects"
