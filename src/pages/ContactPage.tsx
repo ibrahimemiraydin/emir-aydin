@@ -44,7 +44,7 @@ const socialLinks = [
     id: 6,
     name: "Discord",
     icon: <FaDiscord size={50} />,
-    link: "https://discord.com/invite/DGqypeK5WR",
+    link: "https://discord.gg/vVqSqUhNb9",
     bgColor: "bg-gradient-to-r from-indigo-500 to-indigo-700",
   },
 ];

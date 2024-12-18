@@ -14,7 +14,7 @@ const socialLinks = [
   { id: 3, icon: <FaInstagram size={30} />, link: "https://instagram.com/emiraydin.16", bgColor: "bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600" },
   { id: 4, icon: <FaYoutube size={30} />, link: "https://youtube.com/@DejavuTR", bgColor: "bg-red-600" },
   { id: 5, icon: <FaTwitter size={30} />, link: "https://twitter.com/emiraydin1625", bgColor: "bg-blue-500" },
-  { id: 6, icon: <FaDiscord size={30} />, link: "https://discord.com/invite/DGqypeK5WR", bgColor: "bg-indigo-500" },
+  { id: 6, icon: <FaDiscord size={30} />, link: "https://discord.gg/vVqSqUhNb9", bgColor: "bg-indigo-500" },
 ];
 
 interface ContactDropdownProps {
