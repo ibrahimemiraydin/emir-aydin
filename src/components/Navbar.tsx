@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const hoverTimeout = useRef<number | null>(null);
-  const location = useLocation(); // Aktif sayfayı almak için
+  const location = useLocation();
 
   const { t } = useTranslation();
 
@@ -65,29 +65,35 @@ const Navbar: React.FC = () => {
             <li>
               <Link
                 to="/"
-                className={`relative transition-colors ${
+                className={`relative group transition-colors ${
                   isActive("/")
-                    ? "text-blue-500 underline"
+                    ? "text-blue-500"
                     : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
                 }`}
               >
                 {t("navbar.home")}
-                {/* Custom underline effect */}
                 <span
-                className={`absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 transition-all duration-300 transform scale-x-0 group-hover:scale-x-100`}
+                  className={`absolute bottom-[-2px] left-0 w-full h-[1px] bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${
+                    isActive("/") ? "scale-x-100" : ""
+                  }`}
                 ></span>
               </Link>
             </li>
             <li>
               <Link
                 to="/projects"
-                className={`transition-colors ${
+                className={`relative group transition-colors ${
                   isActive("/projects")
-                    ? "text-blue-500 underline"
+                    ? "text-blue-500"
                     : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
                 }`}
               >
                 {t("navbar.projects")}
+                <span
+                  className={`absolute bottom-[-2px] left-0 w-full h-[1px] bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${
+                    isActive("/projects") ? "scale-x-100" : ""
+                  }`}
+                ></span>
               </Link>
             </li>
             <li
@@ -95,16 +101,21 @@ const Navbar: React.FC = () => {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <span className="flex items-center gap-1 cursor-pointer hover:text-blue-500">
+              <span className="flex items-center gap-1 cursor-pointer">
                 <Link
                   to="/contact"
-                  className={`transition-colors ${
+                  className={`relative group transition-colors ${
                     isActive("/contact")
-                      ? "text-blue-500 underline "
-                      : "text-gray-800 dark:text-gray-200  hover:text-blue-500"
+                      ? "text-blue-500"
+                      : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
                   }`}
                 >
                   {t("navbar.contact")}
+                  <span
+                    className={`absolute bottom-[-2px] left-0 w-full h-[1px] bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${
+                      isActive("/contact") ? "scale-x-100" : ""
+                    }`}
+                  ></span>
                 </Link>
                 <FaChevronDown
                   size={12}
@@ -131,7 +142,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Navigation */}
       <div
-        className={`fixed top-0 right-0 h-full w-3/4 bg-gray-50 dark:bg-gray-800  transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-3/4 bg-gray-50 dark:bg-gray-800 transform transition-transform duration-300 ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -145,43 +156,55 @@ const Navbar: React.FC = () => {
           <li>
             <Link
               to="/"
-              className={`relative transition-colors ${
+              className={`relative group transition-colors ${
                 isActive("/")
-                  ? "text-blue-500 underline "
+                  ? "text-blue-500"
                   : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
               {t("navbar.home")}
               <span
-              className={`absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 transition-all duration-300 transform scale-x-0 group-hover:scale-x-100`}
-              ></span>             
+                className={`absolute bottom-[-2px] left-0 w-full h-[1px] bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${
+                  isActive("/") ? "scale-x-100" : ""
+                }`}
+              ></span>
             </Link>
           </li>
           <li>
             <Link
               to="/projects"
-              className={`transition-colors ${
+              className={`relative group transition-colors ${
                 isActive("/projects")
-                  ? "text-blue-500 underline"
+                  ? "text-blue-500"
                   : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
               {t("navbar.projects")}
+              <span
+                className={`absolute bottom-[-2px] left-0 w-full h-[1px] bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${
+                  isActive("/projects") ? "scale-x-100" : ""
+                }`}
+              ></span>
             </Link>
           </li>
           <li>
             <Link
               to="/contact"
-              className={`transition-colors ${
+              className={`relative group transition-colors ${
                 isActive("/contact")
-                  ? "text-blue-500 underline"
+                  ? "text-blue-500"
                   : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
               {t("navbar.contact")}
+              <span
+                className={`absolute bottom-[-2px] left-0 w-full h-[1px] bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${
+                  isActive("/contact") ? "scale-x-100" : ""
+                }`}
+              ></span>
             </Link>
           </li>
           <div>

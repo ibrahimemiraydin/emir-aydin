@@ -1,99 +1,98 @@
-import { motion } from "framer-motion";
-import { FaEnvelope, FaGithub, FaInstagram, FaYoutube, FaTwitter, FaDiscord } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaInstagram, FaYoutube, FaTwitter, FaDiscord, FaExternalLinkAlt } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
-// Social Links Data
 const socialLinks = [
   {
     id: 1,
     name: "Email",
-    icon: <FaEnvelope size={40} />,
+    icon: <FaEnvelope size={24} />, 
+    detail: "emiraydin1625@hotmail.com",
     link: "mailto:emiraydin1625@hotmail.com",
+    color: "text-gray-600",
   },
   {
     id: 2,
     name: "GitHub",
-    icon: <FaGithub size={40} />,
+    icon: <FaGithub size={24} />, 
+    detail: "github.com/ibrahimemiraydin",
     link: "https://github.com/ibrahimemiraydin",
-    bgColor: "bg-black"
+    color: "text-black",
   },
   {
     id: 3,
     name: "Instagram",
-    icon: <FaInstagram size={40} />,
+    icon: <FaInstagram size={24} />, 
+    detail: "instagram.com/emiraydin.16",
     link: "https://instagram.com/emiraydin.16",
+    color: "text-pink-500",
   },
   {
     id: 4,
     name: "YouTube",
-    icon: <FaYoutube size={40} />,
+    icon: <FaYoutube size={24} />, 
+    detail: "youtube.com/@DejavuTR",
     link: "https://youtube.com/@DejavuTR",
+    color: "text-red-600",
   },
   {
     id: 5,
     name: "X (Twitter)",
-    icon: <FaTwitter size={40} />,
+    icon: <FaTwitter size={24} />, 
+    detail: "twitter.com/emiraydin1625",
     link: "https://twitter.com/emiraydin1625",
+    color: "text-blue-500",
   },
   {
     id: 6,
     name: "Discord",
-    icon: <FaDiscord size={40} />,
+    icon: <FaDiscord size={24} />, 
+    detail: "discord.gg/vVqSqUhNb9",
     link: "https://discord.gg/vVqSqUhNb9",
+    color: "text-indigo-500",
   },
 ];
 
 const ContactPage = () => {
   const { t } = useTranslation();
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
       {/* Title */}
-      <motion.h1
-        className="text-5xl font-extrabold text-gray-800 dark:text-gray-100 mb-12 text-center"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
+      <h1 className="text-4xl font-extrabold text-gray-800 dark:text-gray-100 mb-8 text-center">
         {t("İletişime Geç")}
-      </motion.h1>
+      </h1>
 
-      {/* Social Media Links */}
-      <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 lg:px-32"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      {/* Social Links */}
+      <div className="w-full max-w-3xl grid grid-cols-1 sm:grid-cols-2 gap-6">
         {socialLinks.map((social) => (
-          <motion.a
+          <a
             key={social.id}
             href={social.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center text-gray-800 dark:text-gray-100"
-            variants={itemVariants}
-            whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+            className="flex items-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md transition-transform hover:scale-105 hover:shadow-lg"
           >
             {/* Icon */}
-            <div className="mb-2 bg-white dark:bg-gray-700 shadow-lg rounded-lg w-10 py-0 border-1 ">{social.icon}</div>
-            {/* Name */}
-            <p className="text-lg font-semibold">{social.name}</p>
-          </motion.a>
+            <div className={`flex-shrink-0 ${social.color}`}>{social.icon}</div>
+
+            {/* Details */}
+            <div className="ml-4 flex flex-col">
+              <span className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+                {social.name}
+              </span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">
+                {social.detail}
+              </span>
+            </div>
+
+            {/* External Link Icon */}
+            <FaExternalLinkAlt
+              className="ml-auto text-gray-400 dark:text-gray-500"
+              size={16}
+            />
+          </a>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };
