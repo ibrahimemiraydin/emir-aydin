@@ -77,6 +77,7 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
+        <ul className="h-6 w-px bg-gradient-to-b from-transparent via-gray-300 dark:via-white-600 to-transparent opacity-150"></ul>
           <ul className="flex gap-6 text-lg font-medium">
             <li>
               <Link
@@ -144,7 +145,7 @@ const Navbar: React.FC = () => {
               />
             </li>
           </ul>
-          <ul></ul>
+          <ul className="h-6 w-px bg-gradient-to-b from-transparent via-gray-300 dark:via-white-600 to-transparent opacity-150"></ul>
           <ThemeToggle />
         </div>
           <ul className="md:hidden focus:outline-none fixed right-14 z-50">
