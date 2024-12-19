@@ -222,27 +222,26 @@ const Navbar: React.FC = () => {
             </Link>
           </li>
           <div className="flex flex-col gap-2 mt-8 items-center absolute bottom-0 pb-32">
-
             <div className="flex justify-center gap-6 absolute bottom-0 items-center pb-20">
               <a href="mailto:emiraydin1625@hotmail.com" target="_blank" rel="noopener noreferrer">
-                <FaEnvelope size={38} className="text-gray-800 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+                <FaEnvelope size={38} className="text-blue-500 dark:text-blue-500 hover:text-blue-400 dark:hover:text-blue-400 transition-colors" />
               </a>
               <a href="https://github.com/ibrahimemiraydin" target="_blank" rel="noopener noreferrer">
-                <FaGithub size={38} className="text-gray-800 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+                <FaGithub size={38} className="text-gray-800 dark:text-gray-200 hover:text-gray-400 dark:hover:text-gray-400 transition-colors" />
               </a>
               <a href="https://youtube.com/@DejavuTR" target="_blank" rel="noopener noreferrer">
-                <FaYoutube size={38} className="text-gray-800 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+                <FaYoutube size={38} className="text-red-600 dark:text-red-600 hover:text-red-500 dark:hover:text-red-800 transition-colors" />
               </a>
             </div>
             <div className="flex justify-center gap-6 absolute bottom-0 items-center pb-6">
               <a href="https://discord.gg/vVqSqUhNb9" target="_blank" rel="noopener noreferrer">
-                <FaDiscord size={38} className="text-gray-800 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+                <FaDiscord size={38} className="text-blue-600 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-500 transition-colors" />
              </a>
              <a href="https://instagram.com/emiraydin.16" target="_blank" rel="noopener noreferrer">
-              <FaInstagram size={38} className="text-gray-800 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+              <FaInstagram size={38} className="text-red-400 dark:text-red-400 hover:text-red-500 dark:hover:text-pink-800 transition-colors" />
             </a>
             <a href="https://twitter.com/emiraydin1625" target="_blank" rel="noopener noreferrer">
-              <FaTwitter size={38} className="text-gray-800 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+              <FaTwitter size={38} className="text-blue-500 dark:text-blue-500 hover:text-blue-400 dark:hover:text-blue-400 transition-colors" />
             </a>
             </div>
           </div>
