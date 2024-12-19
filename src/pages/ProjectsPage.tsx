@@ -8,7 +8,7 @@ const ProjectsPage = () => {
 
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-800 py-16 px-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-800 py-24 px-4">
       <h2 className="text-3xl text-center font-bold mb-8 text-gray-800 dark:text-gray-200">
         {t("Tüm Projeler")}
       </h2>

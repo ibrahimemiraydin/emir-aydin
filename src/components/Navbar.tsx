@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaBars, FaTimes, FaEnvelope, FaGithub, FaYoutube, FaDiscord, FaInstagram, FaTwitter } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import ThemeToggle from "./ThemeToggle";
 import ContactDropdown from "./ContactDropdown";
@@ -24,6 +24,22 @@ const Navbar: React.FC = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        isMenuOpen &&
+        navbarRef.current &&
+        !navbarRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [isMenuOpen]);
 
   const handleMouseEnter = () => {
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
@@ -54,7 +70,7 @@ const Navbar: React.FC = () => {
             <img
               src="../icons/android-chrome-512x512.png"
               alt="Emir Aydın"
-              className="w-12 h-12"
+              className="w-12 h-12 hover:scale-110 transition-transform duration-300"
             />
           </Link>
         </h1>
@@ -130,29 +146,25 @@ const Navbar: React.FC = () => {
           </ul>
           <ThemeToggle />
         </div>
-
+          <ul className="md:hidden focus:outline-none fixed right-14 z-50">
+          <ThemeToggle />
+          </ul>
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl focus:outline-none dark:text-white"
+          className="md:hidden text-2xl focus:outline-none dark:text-white z-50"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
         >
-          ☰
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
-
       {/* Mobile Navigation */}
       <div
         className={`fixed top-0 right-0 h-full w-3/4 bg-gray-50 dark:bg-gray-800 transform transition-transform duration-300 ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        } shadow-lg`}
       >
-        <button
-          className="absolute top-4 right-4 text-2xl text-gray-800 dark:text-gray-200"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          ✖
-        </button>
-        <ul className="flex flex-col items-center z-50 gap-6 mt-12 text-lg font-medium">
+        <ul className="flex flex-col items-center gap-6 mt-24 text-lg font-medium">
           <li>
             <Link
               to="/"
@@ -207,8 +219,30 @@ const Navbar: React.FC = () => {
               ></span>
             </Link>
           </li>
-          <div>
-            <ThemeToggle />
+          <div className="flex flex-col gap-2 mt-8 items-center absolute bottom-0 pb-32">
+
+            <div className="flex justify-center gap-6 absolute bottom-0 items-center pb-20">
+              <a href="mailto:emiraydin1625@hotmail.com" target="_blank" rel="noopener noreferrer">
+                <FaEnvelope size={38} className="text-gray-800 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+              </a>
+              <a href="https://github.com/ibrahimemiraydin" target="_blank" rel="noopener noreferrer">
+                <FaGithub size={38} className="text-gray-800 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+              </a>
+              <a href="https://youtube.com/@DejavuTR" target="_blank" rel="noopener noreferrer">
+                <FaYoutube size={38} className="text-gray-800 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+              </a>
+            </div>
+            <div className="flex justify-center gap-6 absolute bottom-0 items-center pb-6">
+              <a href="https://discord.gg/vVqSqUhNb9" target="_blank" rel="noopener noreferrer">
+                <FaDiscord size={38} className="text-gray-800 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+             </a>
+             <a href="https://instagram.com/emiraydin.16" target="_blank" rel="noopener noreferrer">
+              <FaInstagram size={38} className="text-gray-800 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+            </a>
+            <a href="https://twitter.com/emiraydin1625" target="_blank" rel="noopener noreferrer">
+              <FaTwitter size={38} className="text-gray-800 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+            </a>
+            </div>
           </div>
         </ul>
       </div>
