@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaChevronDown, FaBars, FaTimes, FaEnvelope, FaGithub, FaYoutube, FaDiscord, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaChevronDown, FaBars, FaTimes, FaEnvelope, FaGithub, FaYoutube, FaDiscord, FaInstagram, FaTwitter} from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import ThemeToggle from "./ThemeToggle";
 import ContactDropdown from "./ContactDropdown";
@@ -162,7 +162,7 @@ const Navbar: React.FC = () => {
       </div>
       {/* Mobile Navigation */}
       <div
-        className={`fixed top-0 right-0 h-full w-3/4 bg-gray-50 dark:bg-gray-800 transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-3/6 bg-gray-50 dark:bg-gray-800 transform transition-transform duration-300 ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } shadow-lg`}
       >

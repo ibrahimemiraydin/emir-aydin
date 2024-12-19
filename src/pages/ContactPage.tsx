@@ -56,9 +56,9 @@ const ContactPage = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 py-16">
       {/* Title */}
-      <h1 className="text-4xl font-extrabold text-gray-800 dark:text-gray-100 mb-8 text-center">
+      <h1 className="text-4xl font-extrabold text-gray-800 dark:text-gray-100 mb-8 py-4 text-center ">
         {t("İletişime Geç")}
       </h1>
 

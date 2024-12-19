@@ -9,14 +9,17 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2"
+      className="p-2 rounded-lg transition-all duration-300 hover:bg-gray-200 dark:hover:bg-gray-700 "
     >
+      <ul className="transition-transform duration-500 rotate-0 dark:-rotate-90">
       {/* Eğer tema dark ise Ay simgesini, light ise Güneş simgesini göster */}
       {theme === "dark" ? (
-        <MoonIcon className="w-6 h-6 text-gray-800 dark:text-white" />
+        <MoonIcon className="w-6 h-6 text-blue-500 dark:text-white" />
       ) : (
-        <SunIcon className="w-6 h-6" />
+        <SunIcon className="w-6 h-6 text-yellow-500 dark:text-white" />
       )}
+      </ul>
+
     </button>
   );
 };
