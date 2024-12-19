@@ -144,6 +144,7 @@ const Navbar: React.FC = () => {
               />
             </li>
           </ul>
+          <ul></ul>
           <ThemeToggle />
         </div>
           <ul className="md:hidden focus:outline-none fixed right-14 z-50">
